@@ -57,3 +57,19 @@ async function getMoreOrLessCitiesUf(more) {
 
   console.log(result);
 }
+
+async function getBiggerNameCities() {}
+
+async function getBiggerName(uf) {
+  const cities = JSON.parse(fs.readFile(`./states/${uf}.json`));
+
+  let maxSize = 0;
+  let maxCity;
+
+  cities.forEach((city) => {
+    if (city.Nome.length > maxSize) {
+      maxSize = city.Nome.length;
+      maxCity = city;
+    }
+  });
+}
