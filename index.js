@@ -1,7 +1,11 @@
 //Não precisar de fazer callbacks
 const fs = require('fs').promises;
 
-createFiles();
+init();
+
+async function init() {
+  await createFiles();
+}
 
 async function createFiles() {
   let data = await fs.readFile('./files/Estados.json');
@@ -17,4 +21,10 @@ async function createFiles() {
       JSON.stringify(stateCities)
     );
   }
+}
+
+async function getCitiesCount(uf) {
+  const data = await fs.readFile(`./states/${uf}.json`);
+  const cities = JSON.parse(data);
+  return cities.length;
 }
